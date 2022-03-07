@@ -15,3 +15,13 @@ var ItemSchema = new Schema({
     name            : { type: String, required: true, trim: true }
     , price             : Number
 });
+# http://localhost:5000/student/new
+
+{
+    "Name": "Aashutosh nishda",
+    "FName": "Ramji Nishad",
+    "MName": "Gaindi Nishad",
+    "DOB": "26/05/03",
+}
+
+# http://localhost:

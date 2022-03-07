@@ -6,7 +6,7 @@ const student = require("../../model/Student.js");
 const teacher = require("../../model/teacher.js");
 
 router.post("/new" , [
-    body("Name","Name is incorrect").isEmpty(),
+    body("Name","Name is incorrect").isLength({min: 3}),
     body("ContactNo", "Correct your contact no").isLength(10),
     body("UserId","UserId Must be 5 digit").isLength(5),
     body("Password","Password is soo weak").isLength(8),
@@ -15,8 +15,10 @@ router.post("/new" , [
     const err= validationResult(req);
 
     if(err.isEmpty() == false){
-        return res.send({ error: err.array()})
+        return res.send({error: err.array()});
     }
+
+    return res.send("all 👍");
 }
 
 

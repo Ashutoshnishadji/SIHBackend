@@ -4,33 +4,32 @@ const router = express.Router();
 const Student = require("../../model/Student");
 
 router.post("/new" ,  [
-    body("Name" , "Name is incorrect").isEmpty(),
-    body("FName" , "FName is incorrect").isEmpty(),
-    body("MName" , "MName is incorrect").isEmpty(),
-    body("Password" , "Password is so week").isLength({ min: 8 }),
-    body("ContactNo" , "Contact number must be 10").isLength( 10 ),
-    body("AdmissionDate" , "enter only date").isDate(),
-    body("AdmissionNo").isLength(4),
+   body("Name" , "Min length 3").isLength({min: 3}),
+   body("FName" , "Min length 3").isLength({min: 3}),
+   body("MName" , "Min length 3").isLength({min: 3}),
+   body("Password" , "Password is so week").isLength({ min: 8 }),
+   body("ContactNo" , "Contact number must be 10").isLength( 10 ),
+   body("AdmissionNo").isLength(4),
   ] , async (req, res) =>{
 
 const err = validationResult(req);
 
-if(err.isEmpty() == false ){
+if(!err.isEmpty() ){
    return res.send({data: req.body, errors: err.array()});
 }
 try {
   var givendata = req.body;
-  const newstudent = new Student({
-      Name: givendata.Name,
-      FName: givendata.FName,
-      MName: givendata.MName,
-      DOB: givendata.DOB,
-      Password: givendata.Password,
-      AdmissonDate: givendata.AdmissonDate,
-      AdmissonNo: givendata.AdmissonNo,   
-  })
-const response = await newstudent.save();
-return res.send(response);
+//   const newstudent = new Student({
+//       Name: givendata.Name,
+//       FName: givendata.FName,
+//       MName: givendata.MName,
+//       DOB: givendata.DOB,
+//       Password: givendata.Password,
+//       AdmissonDate: givendata.AdmissonDate,
+//       AdmissonNo: givendata.AdmissonNo,   
+//   })
+// const response = await newstudent.save();
+return res.send(givendata);
 } catch (error) {
     return res.send("internel Server Error");
 }

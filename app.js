@@ -1,10 +1,21 @@
 const express = require("express");
-const connection = require("./functions/mongoconnection");
-const UserRouter = require("./Routes/UserRouter");
-const app = express();
-connection();
-app.use("/user" , UserRouter);
+const {connectDatabase} = require('./db')
 
-app.listen(8000 , ()=>{
-    console.log('http://localhost:8000');
+connectDatabase()
+
+const app = express();
+const port = 5000;
+app.use(express.urlencoded())
+app.use(express.json());
+
+app.use('/teacher', require('./Router/teacher/auth.js'))
+app.use('/student', require('./Router/student/auth.js'))
+app.use('/school', require('./Router/school/auth.js'))
+
+app.get('/',(req,res)=>{
+  res.send('hello buddy')
 })
+
+app.listen(port, () => {
+  console.log("connected to backend express");
+});

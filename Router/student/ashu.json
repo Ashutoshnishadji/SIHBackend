@@ -1,0 +1,38 @@
+{
+  "data": {
+    "Name": "dsafdsafds",
+    "FName": "adfdsfasd",
+    "MName": "fdsfdsfgdf",
+    "AdmissonNo": "2020",
+    "contactNo": "9753318620",
+    "AdmissionDate": "2022-03-23",
+    "DOB": "2022-03-26",
+    "Password": "ashuashuashu"
+  },
+  "errors": [
+    {
+      "value": "dsafdsafds",
+      "msg": "Name is incorrect",
+      "param": "Name",
+      "location": "body"
+    },
+    {
+      "value": "adfdsfasd",
+      "msg": "FName is incorrect",
+      "param": "FName",
+      "location": "body"
+    },
+    {
+      "value": "fdsfdsfgdf",
+      "msg": "MName is incorrect",
+      "param": "MName",
+      "location": "body"
+    },
+    {
+      "msg": "Contact number must be 10",
+      "param": "ContactNo",
+      "location": "body"
+    },
+    { "msg": "Invalid value", "param": "AdmissionNo", "location": "body" }
+  ]
+}
